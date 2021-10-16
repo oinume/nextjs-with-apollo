@@ -1,0 +1,55 @@
+type Post {
+    id: ID!
+    title: String!
+    votes: Int!
+    url: String!
+    createdAt: String!
+}
+
+type PostsMeta {
+    count: Int!
+}
+
+type Query {
+    allPosts(orderBy: OrderBy, first: Int!, skip: Int!): [Post!]!
+    _allPostsMeta: PostsMeta!
+}
+
+enum OrderBy {
+    createdAt_ASC,
+    createdAt_DESC
+}
+
+type Mutation {
+    createPost(title: String!, url: String!): Post!
+    updatePost(id: ID!, votes: Int): Post!
+}
+
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+#type Todo {
+#  id: ID!
+#  text: String!
+#  done: Boolean!
+#  user: User!
+#}
+#
+#type User {
+#  id: ID!
+#  name: String!
+#}
+#
+#type Query {
+#  todos: [Todo!]!
+#}
+#
+#input NewTodo {
+#  text: String!
+#  userId: String!
+#}
+#
+#type Mutation {
+#  createTodo(input: NewTodo!): Todo!
+#}
